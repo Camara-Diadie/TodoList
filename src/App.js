@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-const App = () => {
-  return <div>coucou</div>
-=======
 import React, { useState } from "react"
 
 import data from "./data.json"
@@ -49,6 +45,5 @@ function App() {
       <ToDoFrom addTask={addTask} />
     </div>
   )
->>>>>>> Stashed changes
 }
 export default App
