@@ -1,5 +1,6 @@
 import React from "react"
 import ToDo from "./ToDo"
+import "./App.css"
 
 const ToDoList = ({ toDoList, handleToggle, handleFilter }) => {
   return (
@@ -13,7 +14,7 @@ const ToDoList = ({ toDoList, handleToggle, handleFilter }) => {
           />
         )
       })}
-      <button style={{ margin: "20px" }} onClick={handleFilter}>
+      <button className="button" onClick={handleFilter}>
         Clear Completed
       </button>
     </div>

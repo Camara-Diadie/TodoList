@@ -1,3 +1,22 @@
 .App {
   text-align: center;
+  background-color: aqua;
+  padding: 10px;
+  border: black 2px solid;
+  width: auto;
+}
+.title {
+  background-color: aqua;
+  color: red;
+}
+.input-task {
+  height: 10px;
+}
+.button {
+  margin: "20px";
+  color: red;
+  background-color: blueviolet;
+  padding: 10px;
+  border-radius: 10px;
+  width: auto;
 }

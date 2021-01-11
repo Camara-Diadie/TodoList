@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const ToDoFrom = ({ addTask }) => {
+const ToDoForm = ({ handleAddTask }) => {
   const [userInput, setUserInput] = useState("")
 
   const handleChange = (e) => {
@@ -9,20 +9,21 @@ const ToDoFrom = ({ addTask }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addTask(userInput)
+    handleAddTask(userInput)
     setUserInput("")
   }
   return (
     <form onSubmit={handleSubmit}>
       <input
+        className="input-task"
         value={userInput}
         type="text"
         onChange={handleChange}
         placeholder="Enter task..."
       />
-      <button>Submit</button>
+      <button className="button">Submit</button>
     </form>
   )
 }
 
-export default ToDoFrom
+export default ToDoForm

@@ -5,7 +5,8 @@ import data from "./data.json"
 //components
 import Header from "./Header"
 import ToDoList from "./ToDoList"
-import ToDoFrom from "./ToDoFrom"
+import ToDoFrom from "./ToDoForm"
+import userForm from "./"
 import "./App.css"
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
     })
     setToDoList(filtered)
   }
-  const addTask = (userInput) => {
+  const handleAddTask = (userInput) => {
     let copy = [...toDoList]
     copy = [
       ...copy,
@@ -42,7 +43,7 @@ function App() {
         handleToggle={handleToggle}
         handleFilter={handleFilter}
       />
-      <ToDoFrom addTask={addTask} />
+      <ToDoFrom handleAddTask={handleAddTask} />
     </div>
   )
 }
