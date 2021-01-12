@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import "./todo-form.css"
 
 const ToDoForm = ({ handleAddTask }) => {
   const [userInput, setUserInput] = useState("")
@@ -13,7 +14,7 @@ const ToDoForm = ({ handleAddTask }) => {
     setUserInput("")
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="todoForm" onSubmit={handleSubmit}>
       <input
         className="input-task"
         value={userInput}
@@ -21,7 +22,7 @@ const ToDoForm = ({ handleAddTask }) => {
         onChange={handleChange}
         placeholder="Enter task..."
       />
-      <button className="button">Submit</button>
+      <button className="button-form">Submit</button>
     </form>
   )
 }

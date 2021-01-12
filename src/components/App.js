@@ -1,16 +1,25 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
-import data from "./data.json"
+import data from "../data.json"
 
 //components
-import Header from "./Header"
-import ToDoList from "./ToDoList"
+import Header from "../components/Header"
+import ToDoList from "../components/ToDoList"
 import ToDoFrom from "./ToDoForm"
-import userForm from "./"
+import userForm from ".."
 import "./App.css"
 
 function App() {
+  useEffect(() => {
+    const toDoList = localStorage.getItem("toDoList")
+    console.log(toDoList)
+  }, [])
   const [toDoList, setToDoList] = useState(data)
+  console.log(data)
+
+  useEffect(() => {
+    localStorage.getItem("toDoList", toDoList)
+  }, [toDoList])
 
   const handleToggle = (id) => {
     let mapped = toDoList.map((task) => {
@@ -20,9 +29,9 @@ function App() {
     })
     setToDoList(mapped)
   }
-  const handleFilter = () => {
+  const handleDelete = (id) => {
     let filtered = toDoList.filter((task) => {
-      return !task.complete
+      return task.id !== id
     })
     setToDoList(filtered)
   }
@@ -34,14 +43,17 @@ function App() {
     ]
     setToDoList(copy)
   }
+  /*  const handleUser = (userName) => {} */
 
   return (
     <div className="App">
-      <Header user="Diadie" />
+      <div className="header">
+        <Header />
+      </div>
       <ToDoList
         toDoList={toDoList}
         handleToggle={handleToggle}
-        handleFilter={handleFilter}
+        handleDelete={handleDelete}
       />
       <ToDoFrom handleAddTask={handleAddTask} />
     </div>

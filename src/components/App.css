@@ -1,0 +1,24 @@
+.App {
+  text-align: center;
+  background-color: rgba(202, 202, 202, 0.021);
+  padding: 0 0 0 10px;
+  width: 100%;
+}
+
+.title {
+  background-color: aqua;
+  color: red;
+}
+.input-task {
+  height: 10px;
+  display: inline-block;
+}
+
+.strike {
+  text-decoration: line-through;
+  background-color: rgb(201, 13, 13);
+  color: white;
+}
+.task {
+  background-color: blueviolet;
+}
