@@ -6,20 +6,33 @@ import data from "../data.json"
 import Header from "../components/Header"
 import ToDoList from "../components/ToDoList"
 import ToDoFrom from "./ToDoForm"
-import userForm from ".."
+
 import "./App.css"
 
 function App() {
+  const [toDoList, setToDoList] = useState(null)
   useEffect(() => {
     const toDoList = localStorage.getItem("toDoList")
-    console.log(toDoList)
-  }, [])
-  const [toDoList, setToDoList] = useState(data)
-  console.log(data)
 
-  useEffect(() => {
-    localStorage.getItem("toDoList", toDoList)
-  }, [toDoList])
+    if (toDoList === null) {
+      localStorage.setItem("toDoList", JSON.stringify(data))
+      const toDoList = localStorage.getItem("toDoList")
+      setToDoList(JSON.parse(toDoList))
+      console.log(toDoList)
+    } else {
+      // const toDoList = localStorage.getItem("toDoList")
+      setToDoList(JSON.parse(toDoList))
+    }
+
+    // Checker si todolist est null
+    // Si c'est null, set la todolist avec le data.json
+    // localStorage.setItem("toDoList", JSON.stringify(data))
+
+    // Si il y a des données dans le localStorage, alors les afficher, set todolist avec ces donnés
+  }, [])
+  console.log(toDoList)
+
+  useEffect(() => {}, [toDoList])
 
   const handleToggle = (id) => {
     let mapped = toDoList.map((task) => {
@@ -33,6 +46,8 @@ function App() {
     let filtered = toDoList.filter((task) => {
       return task.id !== id
     })
+    localStorage.setItem("toDoList", JSON.stringify(filtered))
+
     setToDoList(filtered)
   }
   const handleAddTask = (userInput) => {
@@ -41,6 +56,7 @@ function App() {
       ...copy,
       { id: toDoList.length + 1, task: userInput, complete: false },
     ]
+    localStorage.setItem("toDoList", JSON.stringify(copy))
     setToDoList(copy)
   }
   /*  const handleUser = (userName) => {} */
